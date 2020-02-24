@@ -1,0 +1,52 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	</link>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type=text/javascript> $(function() { $('button').bind('click', function() { $.getJSON('/terminal', {
+		proglang: $('input[name="command" ]').val(), }, function(data) { $("#result").text(data.result); }); return
+		false; }); }); </script> <style>
+		body {
+	background-image: url('../templates/background.jpg');
+	background-size: cover;
+}
+#root{
+	display: flex;
+justify-content: center;
+align-items: center;
+    height: 100%;
+}
+.form{
+	display: flex;
+	flex-direction: column;
+}
+.form button{
+	align-self: flex-end;
+}
+</style>
+</head>
+
+<body>
+<div id="root">
+	<div>
+	<div class="card text-white bg-secondary" style="width: 30rem;box-shadow: 2px 2px 5px #ccc;">
+	  <div class="card-header text-center font-weight-bold"><h2>Remote Terminal</h2></div>
+	  <div class="card-body">	
+		<form action= "/terminal" method = "POST" class="form">
+			  <div class="form-group">
+					<input name="command" type="text" class="form-control input-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter command">
+						<small id="emailHelp" class="form-text text-muted">Remote Terminal Access.</small>
+			</div>
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+		<h3> Output </h3>
+		<div id="result" class="p-3 mb-2 bg-light text-dark">...</div>
+	  </div>
+	</div>
+	</div>
+</div>
+</div>
+</body>
+</html>
